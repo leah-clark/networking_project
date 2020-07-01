@@ -4,14 +4,9 @@
 `
 # endpoint 
 
+get
+
 http://127.0.0.1:5000/api/ip_type
-
-json as 
-
-    
-    {
-        "ip_type": "private"
-    }
 
 # run server on windows
 
