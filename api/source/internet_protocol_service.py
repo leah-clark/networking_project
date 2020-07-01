@@ -2,18 +2,16 @@ import miniupnpc
 import logging
 from exceptions import custom_exceptions
 
+import json
+
 #input: string
 #output: string
-def get_ip(typeOfIp):
+def get_ip():
     uPnP = connect_to_upnp()
-    if (typeOfIp == "public"):
-        return uPnP.externalipaddress()
-    elif (typeOfIp == "private"):
-        return uPnP.lanaddr
-    else:
-        logging.error("Error on user input")
-        raise custom_exceptions.InputError(typeOfIp, "Incorrect value provided, please give either private or public")
-
+    dicOfIp = {}
+    dicOfIp["public"] = uPnP.externalipaddress()
+    dicOfIp["private"] = uPnP.lanaddr
+    return dicOfIp
 
 #input: none
 #output: Upnp object

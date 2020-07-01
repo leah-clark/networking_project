@@ -13,24 +13,15 @@ class IPComponent extends React.Component {
 
   componentDidMount() {
     fetch('api/ip', {
-          method: 'POST', // or 'PUT'
+          method: 'GET', // or 'PUT'
           headers: {
             'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({'ip_type': 'private'}),
+          }
         })
       .then((response) => response.json())
-      .then((data) => this.setState({ privateIpAddress: data }));
-
-    fetch('api/ip', {
-          method: 'POST', // or 'PUT'
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({'ip_type': 'public'}),
-        })
-      .then((response) => response.json())
-      .then((data) => this.setState({ publicIpAddress: data }));
+      .then((data) => this.setState({
+          publicIpAddress: data['public'],
+          privateIpAddress: data['private']}));
     }
 
   render() {

@@ -5,7 +5,7 @@ import IPComponent from "./IPComponent";
 
       render() {
         return (
-          <IPComponent />
+          <IPComponent/>
         );
       }
     }
